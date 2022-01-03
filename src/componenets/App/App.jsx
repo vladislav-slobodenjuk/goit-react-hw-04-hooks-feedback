@@ -15,15 +15,19 @@ export default function App() {
   const handleIncrease = keyName => {
     switch (keyName) {
       case 'good':
-        setGood(prev => prev + 1);
+        // setGood(prev => prev + 1);
+        setGood(good + 1); // как лучше? и можно ли здесь так?
+
         break;
 
       case 'neutral':
-        setNeutral(prev => prev + 1);
+        // setNeutral(prev => prev + 1);
+        setNeutral(neutral + 1);
         break;
 
       case 'bad':
-        setBad(prev => prev + 1);
+        // setBad(prev => prev + 1);
+        setBad(bad + 1);
         break;
 
       default:

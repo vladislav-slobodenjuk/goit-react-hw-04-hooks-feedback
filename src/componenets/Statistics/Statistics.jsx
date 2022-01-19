@@ -23,19 +23,11 @@ export default function Statistics(props) {
 }
 
 Statistics.propTypes = {
-  total: PropTypes.number.isRequired,
-  positive: PropTypes.number.isRequired,
-  statistics: PropTypes.arrayOf(PropTypes.array).isRequired,
+  props: PropTypes.objectOf(
+    PropTypes.exact({
+      total: PropTypes.number.isRequired,
+      positive: PropTypes.number.isRequired,
+      statistics: PropTypes.arrayOf(PropTypes.array).isRequired,
+    }),
+  ),
 };
-
-// Statistics.propTypes = {
-//   props: PropTypes.objectOf(
-//     PropTypes.exact({
-//       total: PropTypes.number.isRequired,
-//       positive: PropTypes.number.isRequired,
-//       statistics: PropTypes.arrayOf(PropTypes.array).isRequired,
-//     }),
-//   ),
-// };
-
-// без деструктуризации валидация через полную вложенность не работает

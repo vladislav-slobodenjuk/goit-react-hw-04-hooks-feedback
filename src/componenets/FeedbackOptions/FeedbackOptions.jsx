@@ -28,14 +28,3 @@ FeedbackOptions.propTypes = {
   options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
-
-// FeedbackOptions.propTypes = {
-//   props: PropTypes.objectOf(
-//     PropTypes.exact({
-//       options: PropTypes.string,
-//       onLeaveFeedback: PropTypes.string,
-//     }),
-//   ),
-// };
-
-// без деструктуризации валидация через полную вложенность не работает

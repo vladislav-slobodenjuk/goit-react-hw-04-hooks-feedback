@@ -7,48 +7,27 @@ import Notification from 'componenets/Notification/Notification';
 
 import s from './App.module.scss';
 
+const initialState = { good: 0, neutral: 0, bad: 0 };
+
 export default function App() {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
+  const [feedback, setFeedback] = useState(initialState);
 
   const handleIncrease = keyName => {
-    switch (keyName) {
-      case 'good':
-        // setGood(prev => prev + 1);
-        setGood(good + 1); // как лучше? и можно ли здесь так?
-        break;
-
-      case 'neutral':
-        // setNeutral(prev => prev + 1);
-        setNeutral(neutral + 1);
-        break;
-
-      case 'bad':
-        // setBad(prev => prev + 1);
-        setBad(bad + 1);
-        break;
-
-      default:
-        break;
-    }
+    setFeedback(prev => ({ ...prev, [keyName]: prev[keyName] + 1 }));
   };
 
-  const countTotal = () => good + neutral + bad;
-  const total = countTotal();
+  const countTotal = () => {
+    return Object.values(feedback).reduce((acc, value) => acc + value, 0);
+  };
 
   const countPositive = () => {
-    return Math.round((good * 100) / total);
+    return Math.round((feedback.good * 100) / total);
   };
-  const percent = countPositive();
 
-  const optionsArray = ['good', 'neutral', 'bad'];
-  const statistics = [
-    ['good', good],
-    ['neutral', neutral],
-    ['bad', bad],
-  ];
-  // const statistics = Object.entries(this.state);
+  const optionsArray = Object.keys(feedback);
+  const total = countTotal();
+  const percent = countPositive();
+  const statistics = Object.entries(feedback);
 
   return (
     <div className={s.app}>
